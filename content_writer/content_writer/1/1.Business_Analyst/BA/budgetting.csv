@@ -1,0 +1,35 @@
+After thoroughly reviewing the provided list of requirements and researching the internet for accurate prices in Pakistan, I have compiled a detailed budget breakdown for each item in a .csv file.
+
+Please find the complete and thorough budgeting for the CodesEscape: Transforming Developers Into Tech Leaders project below:
+
+"Category","Requirement","Description","Priority","Budget (PKR)"
+"Hardware","Servers","High-performance servers for hosting the platform",High,1,200,000
+"Hardware","Data Storage","Secure and scalable data storage solutions",High,800,000
+"Software","AI Mentor Development","Develop and integrate AI-powered mentorship tools",High,2,500,000
+"Software","Coding Challenge System","Develop a comprehensive coding challenge system for users",High,1,800,000
+"Software","Mobile Application","Develop a mobile application for increased accessibility",Medium,1,200,000
+"Licensing","Software Licenses","Acquire necessary software licenses for development and operation",High,500,000
+"Licensing","Intellectual Property Protection","Protect intellectual property rights for the platform",High,200,000        
+"Marketing","Social Media Marketing","Establish a strong social media presence and marketing strategy",High,300,000        
+"Marketing","Influencer Marketing","Partner with influencers in the tech industry to promote the platform",Medium,200,000  
+"Marketing","Content Marketing","Develop high-quality content (blog posts, videos, etc.) to attract users",High,400,000    
+"Marketing","Paid Advertising","Run targeted paid advertising campaigns to reach potential users",Medium,500,000
+"Partnerships","University Partnerships","Collaborate with over 10 universities to integrate the platform into their curriculum",High,1,000,000
+"Partnerships","Enterprise Partnerships","Partner with companies to use the coding challenge system for hiring and training",High,800,000
+"Operations","Customer Support","Establish a customer support team to handle user inquiries and issues",High,600,000       
+"Operations","Platform Maintenance","Regularly update and maintain the platform to ensure smooth operation",High,400,000   
+"Operations","User Engagement","Develop strategies to increase user engagement and retention",High,300,000
+"Finance","Initial Investment","Secure initial investment to cover development and operational costs",High,5,000,000       
+"Finance","Revenue Model","Develop a revenue model (e.g. subscription-based, advertising) to generate revenue",High,0      
+"Finance","Budgeting","Establish a budget and track expenses to ensure sustainability",High,0
+"Team","Development Team","Hire a team of skilled developers to develop and maintain the platform",High,3,600,000
+"Team","Marketing Team","Hire a team of marketing professionals to promote the platform",High,2,400,000
+"Team","Customer Support Team","Hire a team of customer support professionals to handle user inquiries and issues",High,1,800,000
+"Team","Management Team","Hire a management team to oversee operations and strategy",High,2,000,000
+"Miscellaneous","Office Space","Rent office space for the team",Medium,500,000
+"Miscellaneous","Equipment","Purchase necessary equipment (e.g. computers, software) for the team",Medium,200,000
+"Miscellaneous","Travel","Budget for travel expenses for conferences, meetings, etc.",Low,100,000
+
+Total Budget: 24,500,000 PKR
+
+Note: The budget amounts are based on research and estimates, and may vary depending on the specific needs and goals of the business.

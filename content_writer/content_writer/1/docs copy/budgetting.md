@@ -1,0 +1,1 @@
+The total budget for the OEnergy and Global Research Institute Business Plan is $25,475,000. This budget covers all aspects of the business, including research and development, partnerships and collaborations, commercialization strategy, talent acquisition and management, funding and investment, location and facilities, and governance and leadership.
