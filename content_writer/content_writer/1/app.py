@@ -14,7 +14,7 @@ sys.path.append(os.path.join(base_dir, "5.Branding", "SM", "SM"))
 
 
 
-from RBI import refined_business_idea
+from app import refined_business_idea
 from BA import budget_maker
 from MS import marketing_strategy
 from P import business_policies

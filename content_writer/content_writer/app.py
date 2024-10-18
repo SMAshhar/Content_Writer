@@ -5,8 +5,7 @@ from langchain_groq import ChatGroq
 from agents_tasks_rbi import agents, tasks
 
 # Types
-from typing import List
-from types_for_crew import BusinessIdeaAgent
+from typing import List\
 
 # Tools
 import os
@@ -19,7 +18,7 @@ from crewai_tools import (
 search_tool = SerperDevTool()
 scrape_tool = ScrapeWebsiteTool()
 
-tools: List[object] = [scrape_tool, search_tool]
+tools: List[object] = [search_tool, scrape_tool]
 
 # environment variables
 open_ai_key = get_openai_api_key()
@@ -35,11 +34,12 @@ llm = ChatGroq(
 
 # Agents
 searcher_agent=Agent(
-    role=agents['searcher']['role'],
-    goal=agents['searcher']['goal'],
-    backstory=agents['searcher']['backstory'],
-    verbose=agents['searcher']['verbose'],
-    allow_delegation=agents['searcher']['allow_delegation'],
+    role=agents['idea_maker']['role'],
+    goal=agents['idea_maker']['goal'],
+    backstory=agents['idea_maker']['backstory'],
+    verbose=agents['idea_maker']['verbose'],
+    # tools=tools,
+    allow_delegation=agents['idea_maker']['allow_delegation'],
     llm=llm
 )
 planner_agent=Agent(
@@ -63,47 +63,41 @@ writer_agent=Agent(
 searching_task = Task(
     description=tasks['searching']['description'],
     expected_output=tasks['searching']['expected_output'],
-    tools=tools,
+    # tools=tools,
     async_execution=tasks['searching']['async_execution'],
     agent=searcher_agent
 )
 planning_task = Task(
     description=tasks['planning']['description'],
     expected_output=tasks['planning']['expected_output'],
-    tools=tools,
     async_execution=tasks['planning']['async_execution'],
     context=[searching_task],
     agent=planner_agent
 )
-planning_task = Task(
-    description=tasks['planning']['description'],
-    expected_output=tasks['planning']['expected_output'],
-    tools=tools,
-    async_execution=tasks['planning']['async_execution'],
-    context=[planning_task],
-    agent=planner_agent,
-    output_file='./docs/refined_business_plan.md'
+writing_task = Task(
+    description=tasks['writing']['description'],
+    expected_output=tasks['writing']['expected_output'],
+    async_execution=tasks['writing']['async_execution'],
+    context=[searching_task, planning_task],
+    agent=writer_agent,
+    output_file="./docs/final_article.md"
 )
 
 
 # Crew
-RefinedBusinessIdeaCrew = Crew(
+content_writer_crew = Crew(
     agents=[searcher_agent, planner_agent, writer_agent],
     tasks=[searching_task, planning_task],
     verbose=True
 )
 
-def refined_business_idea (
+def content_writing (
         userInput:dict=
             {
-                "name":"Zabrain's Fragrances",
-                # "user_input":"I want to open a tea shop in California with a budget of 1000 usd",
-                "location":"Karachi",
-                # "budget":1000,
-                "plan":"Perfume Impressions"
+                "topic":"New Era of Starlink internet",
             }    
 ):
-    result = RefinedBusinessIdeaCrew.kickoff(inputs=userInput)
+    result = content_writer_crew.kickoff(inputs=userInput)
     return result
     
-# refined_business_idea()
+content_writing()
