@@ -80,40 +80,54 @@ agents: dict[str, ContentAgent] = {
 tasks: dict[str, ContentTask] = {
     "searching": {
         "description": (
-            "Search for credible and reliable sources related to the given {topic}. Gather important "
-            "information that will help in the creation of a well-informed article."
+            "Search for credible and reliable sources related to the given {topic}. "
+            "Gather important information that will contribute to creating a well-informed article. "
+            "This includes finding facts, statistics, opinions, and insights from authoritative websites, publications, and research papers. "
+            "The search must ensure that the sources are trustworthy, relevant, and up-to-date."
         ),
         "expected_output": (
-            "A comprehensive list of key insights, data points, and quotes gathered from reputable "
-            "sources relevant to the {topic}."
+            "A comprehensive list of key insights, data points, statistics, and quotes, each annotated with its source. "
+            "These insights will be highly relevant to the {topic} and useful for the next steps in the content creation process. "
+            "The information should be synthesized in a concise yet complete manner, providing a foundation for the article."
         ),
-        "agent": agents["idea_maker"],  # Assign the 'searcher' agent
-        "async_execution": False,
-        "output_file": None
+        "agent": agents["idea_maker"],  # Assign the 'idea_maker' agent for the search task
+        "async_execution": False,  # This task will execute synchronously to ensure accuracy and relevance
+        "output_file": None  # Output is in memory; passed to the next task in the pipeline
     },
+    
     "planning": {
         "description": (
-            "Using the gathered information, create a structured plan or outline for the article. "
-            "Ensure all the key points are logically arranged and that the article covers the "
-            "required scope effectively."
+            "Using the information gathered from the search task, create a structured outline for the article. "
+            "This involves breaking down the key points, organizing them logically into sections, and ensuring "
+            "that all important aspects of the {topic} are covered. "
+            "Each section should have a clear purpose and be aligned with the article's goal, ensuring the flow is easy to follow. "
+            "Ensure that the plan is comprehensive, covering the topic’s breadth while focusing on its most important aspects."
         ),
         "expected_output": (
-            "A detailed plan with a clear outline of sections, key points, and flow for the article."
+            "A well-organized and structured article outline, including an introduction, body sections, and a conclusion. "
+            "Each section will have a list of key points to be covered, with a logical flow ensuring that the article is coherent and comprehensive. "
+            "This plan will serve as the blueprint for the article writing stage."
         ),
-        "agent": agents["planner"],  # Assign the 'planner' agent
-        "async_execution": False,
-        "output_file": None
+        "agent": agents["planner"],  # Assign the 'planner' agent for the content strategy task
+        "async_execution": False,  # This task will be executed synchronously
+        "output_file": None  # Output is passed to the next task
     },
+    
     "writing": {
         "description": (
-            "Take the structured plan and research and develop a complete article that meets the "
-            "objectives. Ensure clarity, engagement, and adherence to the {topic}."
+            "Using the structured plan and research provided, develop a complete, well-written article. "
+            "The writing should ensure clarity and engagement, following the structure laid out by the planner. "
+            "Each section should be developed thoroughly, with smooth transitions between sections. "
+            "The tone should match the target audience, and the content should align with the overall goals of the article. "
+            "Make sure the article is free of grammatical errors, factually accurate, and adheres to the given {topic}."
         ),
         "expected_output": (
-            "A fully written article based on the given plan, saved in a markdown format."
+            "A polished and fully developed article based on the plan and research provided. "
+            "The final product should be engaging, clear, and concise, ensuring that the key points are communicated effectively. "
+            "The article will be saved in markdown format, with appropriate headings, subheadings, and formatting for readability."
         ),
-        "agent": agents["writer"],  # Assign the 'writer' agent
-        "async_execution": False,
-        "output_file": "./docs/final_article.md"
+        "agent": agents["writer"],  # Assign the 'writer' agent for the final writing task
+        "async_execution": False,  # The article will be written synchronously to ensure accuracy
+        "output_file": "./docs/final_article.md"  # The final article will be saved to this file path
     }
 }
